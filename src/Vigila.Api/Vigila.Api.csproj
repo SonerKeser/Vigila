@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <WebRoot>..\Vigila.Web\</WebRoot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vigila.Core\Vigila.Core.csproj" />
+  </ItemGroup>
+
+  <!-- wwwroot, ön yüz derlemesinin çıktısıdır; dosya adları her derlemede değiştiği için SDK'nın listesine girmez. -->
+  <ItemGroup>
+    <Content Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.14">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.14" />
+  </ItemGroup>
+
+  <!--
+    dotnet publish sırasında arayüz derlenir ve wwwroot yayın klasörüne eklenir; böylece tek klasörlük,
+    kendi kendine yeten bir paket çıkar. Arayüzü ayrıca derlediyseniz /p:SkipWebBuild=true verin.
+  -->
+  <Target Name="BuildWebUi" AfterTargets="ComputeFilesToPublish" Condition="'$(SkipWebBuild)' != 'true'">
+    <Exec WorkingDirectory="$(WebRoot)" Command="npm ci --no-audit --no-fund" />
+    <Exec WorkingDirectory="$(WebRoot)" Command="npm run build" />
+  </Target>
+
+  <Target Name="IncludeWebUi" AfterTargets="BuildWebUi;ComputeFilesToPublish">
+    <Error Condition="!Exists('wwwroot\index.html')" Text="wwwroot\index.html yok. Önce src/Vigila.Web içinde 'npm run build' çalıştırın ya da SkipWebBuild vermeyin." />
+    <ItemGroup>
+      <WebDist Include="wwwroot\**" />
+      <ResolvedFileToPublish Include="@(WebDist->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(WebDist.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

@@ -1,0 +1,41 @@
+name: Derleme ve testler
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: src/Vigila.Web/package-lock.json
+
+      - name: Arayüz bağımlılıkları
+        working-directory: src/Vigila.Web
+        run: npm ci --no-audit --no-fund
+
+      - name: Tip denetimi
+        working-directory: src/Vigila.Web
+        run: npm run typecheck
+
+      - name: Arayüz testleri
+        working-directory: src/Vigila.Web
+        run: npm test
+
+      - name: Arayüz derlemesi
+        working-directory: src/Vigila.Web
+        run: npm run build
+
+      - name: .NET testleri
+        run: dotnet test --configuration Release

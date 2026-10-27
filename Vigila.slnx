@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Vigila.Api/Vigila.Api.csproj" />
+    <Project Path="src/Vigila.Core/Vigila.Core.csproj" />
+    <Project Path="src/Vigila.Lab/Vigila.Lab.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Vigila.Tests/Vigila.Tests.csproj" />
+  </Folder>
+</Solution>

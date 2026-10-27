@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vigila</title>
+    <meta name="description" content="Video izlerken verilen tepkileri milisaniyesiyle ölçen açık kaynaklı uyaran-tepki deney platformu. Sunucu, laboratuvar istemcisi ve örnek deney paketi." />
+    <meta name="theme-color" content="#0E1130" />
+    <meta property="og:title" content="Vigila: video tabanlı uyaran-tepki deneyleri" />
+    <meta property="og:description" content="Görsel ve işitsel uyaranları videonun üzerine planlayın, katılımcıların tepki süresini milisaniyesiyle ölçün." />
+    <meta property="og:image" content="https://sonerkeser.github.io/Vigila/assets/03-deney-studyosu.webp" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preload" href="fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#icerik">İçeriğe geç</a>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="#" aria-label="Vigila ana sayfa">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#222862" /><path d="M5 19h6l2.5-9 4 14 2.5-5H27" fill="none" stroke="#EDEFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /><circle cx="24.5" cy="9.5" r="3" fill="#F2546B" /></svg>
+          <span>Vigila</span>
+        </a>
+        <nav aria-label="Bölümler">
+          <a href="#nasil">Nasıl çalışır</a>
+          <a href="#olcum">Ölçüm</a>
+          <a href="#ozellikler">Özellikler</a>
+          <a href="#indir">İndir</a>
+        </nav>
+        <a class="gh" href="https://github.com/SonerKeser/Vigila" rel="noopener">GitHub</a>
+      </div>
+    </header>
+
+    <main id="icerik">
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <h1>Video izlerken verilen tepkiyi milisaniyesiyle ölçün.</h1>
+          <p class="lede">
+            Vigila, görsel ve işitsel uyaranları bir videonun üzerine yerleştirip katılımcının tepki süresini kaydeden açık kaynaklı bir deney platformu. Deneyi tarayıcıda tasarlayın,
+            bağlantıyla ya da laboratuvarda yürütün, sonuçları oturum biter bitmez inceleyin.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="#indir">Vigila'yı indir</a>
+            <a class="btn" href="https://github.com/SonerKeser/Vigila" rel="noopener">Kaynak kod</a>
+          </div>
+          <p class="meta" data-release>Sürüm 1.0.0. Windows ve Linux sunucusu, Windows laboratuvar istemcisi. MIT lisansı.</p>
+        </div>
+
+        <figure class="stage-wrap" aria-label="Canlı örnek: video üzerinde beliren uyaranlar ve tepki süreleri">
+          <div class="stage" id="stage">
+            <div class="stage-video" aria-hidden="true"></div>
+            <div class="stage-readout">
+              <div><span>Son tepki</span><strong id="lastRt">–</strong></div>
+              <div class="right"><span>İsabet</span><strong id="hitRate">–</strong></div>
+            </div>
+          </div>
+          <div class="strip" id="strip" aria-hidden="true">
+            <span class="strip-label top">Uyaranlar</span>
+            <span class="strip-label bottom">Tepkiler</span>
+          </div>
+          <figcaption>
+            <span><i class="sw visual"></i>Görsel</span>
+            <span><i class="sw audio"></i>İşitsel</span>
+            <span><i class="sw av"></i>Görsel-işitsel</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="nasil" class="wrap steps">
+        <h2>Bir deney, üç adım</h2>
+        <ol>
+          <li class="step">
+            <div class="step-copy">
+              <span class="num">1</span>
+              <h3>Tasarlayın</h3>
+              <p>
+                Videoyu, görselleri ve sesleri kütüphaneden seçin. Tekrar sayısını, gösterim süresini, yanıt penceresini ve yerleşimi belirleyin. Plan her değişiklikte sunucuda yeniden
+                üretilir; konum haritasında ve zaman çizelgesinde anında görünür. Uyaranlar ve yanıt pencereleri hiçbir zaman çakışmaz.
+              </p>
+            </div>
+            <img src="assets/03-deney-studyosu.webp" alt="Deney stüdyosu: ayarlar, uyaranların ekran üzerindeki konum haritası ve zaman çizelgesi" loading="lazy" width="2880" height="1800" />
+          </li>
+          <li class="step">
+            <div class="step-copy">
+              <span class="num">2</span>
+              <h3>Yürütün</h3>
+              <p>
+                Katılımcı onam verir, kısa soruları yanıtlar, yanıt tuşunu dener ve geri bildirimli bir alıştırma yapar. Video ve uyaranlar önceden indirilir; deney tam ekranda,
+                takılmadan akar. Katılımcılar bağlantıyı kendi bilgisayarlarında açar, laboratuvarda ise masaüstü istemcisi kullanılır.
+              </p>
+            </div>
+            <div class="pair">
+              <img src="assets/11-onam-ve-anket.webp" alt="Katılımcı ekranı: onam metni ve demografik sorular" loading="lazy" width="2880" height="1800" />
+              <img src="assets/13-deney-sirasinda.webp" alt="Deney sırasında video karesinin üzerinde beliren görsel uyaran" loading="lazy" width="2880" height="1800" />
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-copy">
+              <span class="num">3</span>
+              <h3>Analiz edin</h3>
+              <p>
+                İsabet, tepki süresi, duyarlılık (d′), yanlış alarm, kanal ve ekran çeyreği kırılımı, zamanla dikkat düşüşü ve kanallar arası eşleştirilmiş t-testi oturum biter bitmez
+                hesaplanır. Deneme düzeyindeki veri R, SPSS ve Python için CSV olarak iner.
+              </p>
+            </div>
+            <div class="pair">
+              <img src="assets/06-oturum-sonucu.webp" alt="Oturum sonucu: isabet oranı, tepki süreleri, d′ ve katılımcı bilgileri" loading="lazy" width="2880" height="1800" />
+              <img src="assets/04b-karsilastirma.webp" alt="Deney sonuçları: kanallar arası eşleştirilmiş t-testi ve blok eğilimi" loading="lazy" width="2880" height="1800" />
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="olcum" class="measure">
+        <div class="wrap">
+          <h2>Zamanlama, ağdan ve ekran çiziminden bağımsız</h2>
+          <div class="measure-grid">
+            <div class="method">
+              <p>Tepki süresi katılımcının tarayıcısında, tek bir saatle ölçülür:</p>
+              <dl>
+                <div>
+                  <dt>Görsel</dt>
+                  <dd>Uyaran, video karesiyle aynı ekran yenilemesinde görünür. Kaydedilen an, o karenin ekrana geleceği andır.</dd>
+                </div>
+                <div>
+                  <dt>Ses</dt>
+                  <dd>Önceden çözülür ve ses kartının çıkış gecikmesi hesaba katılarak, görselin belireceği kareye hizalı biçimde önceden zamanlanır.</dd>
+                </div>
+                <div>
+                  <dt>Yanıt</dt>
+                  <dd>Klavye ya da dokunma olayının kendi zaman damgası. Basılı tutulan tuşun tekrarları sayılmaz.</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="readouts">
+              <div>
+                <strong>−0,9 ms</strong><p>Görsel uyaranda ölçülen tepki ile gerçek tepki arasındaki ortalama fark. Standart sapma 4,5 ms.</p>
+              </div>
+              <div>
+                <strong>&lt; 1 ms</strong><p>Görsel-işitsel uyaranda sesle görüntü arasındaki ortalama fark.</p>
+              </div>
+              <div>
+                <strong>≤ 1 kare</strong><p>Plandan sapma: görsel, başlangıç anını geçen ilk video karesinde belirir.</p>
+              </div>
+              <div>
+                <strong>40 ms</strong><p>Ölçüm ortamındaki ses çıkış gecikmesi; kayıtta otomatik olarak düzeltildi.</p>
+              </div>
+            </div>
+          </div>
+          <p class="footnote">
+            Ölçüm ortamı: başsız Microsoft Edge, 30 kare/sn video, uyaranı sayfadan ve ses çıkışından algılayıp bilinen gecikmeyle yanıt veren üç sanal katılımcı, toplam 60 deneme.
+            Gerçek cihazlarda değerler ekran yenileme hızına ve ses donanımına göre değişir; her oturum kendi zamanlama kalitesini kaydeder ve sapma yüksekse araştırmacıyı uyarır.
+          </p>
+        </div>
+      </section>
+
+      <section id="ozellikler" class="wrap features">
+        <h2>Neler yapılabilir</h2>
+        <div class="feature-groups">
+          <section>
+            <h3>Araştırma akışı</h3>
+            <ul>
+              <li>Onam metni ve katılımcı formu, hazır demografik sorular</li>
+              <li>Geri bildirimli alıştırma bloğu</li>
+              <li>Klavye, dokunma ya da fareyle yanıt</li>
+              <li>Türkçe ve İngilizce katılımcı ekranları</li>
+              <li>Yönerge videosu ve cihaz uygunluk denetimi</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Planlama</h3>
+            <ul>
+              <li>Ayrı, eşleşik ya da karma görsel-işitsel sunum</li>
+              <li>Rastgele, dengeli çeyrek ya da orta yerleşim</li>
+              <li>Tohumla yeniden üretilebilir plan, istenirse herkese aynı plan</li>
+              <li>Katılımcının göreceğinin aynısını oynatan canlı önizleme</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Analiz</h3>
+            <ul>
+              <li>d′, yanıt ölçütü, ters etkinlik puanı, ayıklanmış ortalama</li>
+              <li>Kanal ve ekran çeyreği kırılımı, çok duyulu kazanç</li>
+              <li>Zamanla performans düşüşü, kanallar arası t-testi ve etki büyüklüğü</li>
+              <li>Oturumu yeniden izleme, uzun biçimli CSV ve ham JSON</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Çevrim içi katılım</h3>
+            <ul>
+              <li>Hesap gerektirmeyen paylaşılabilir bağlantı</li>
+              <li>Katılımcı sınırı, son tarih, tekrar katılım engeli</li>
+              <li>Adresten katılımcı kodu, bitişte anket platformuna yönlendirme</li>
+              <li>Gönderilemeyen sonuç cihazda saklanır, sonra gönderilir</li>
+            </ul>
+          </section>
+          <section>
+            <h3>İşletim</h3>
+            <ul>
+              <li>Canlı oturum izleme</li>
+              <li>Sunucuda düşülen oturum kredileri, roller</li>
+              <li>Veritabanı, medya ve anahtarlarla tam yedek</li>
+              <li>İmzalı medya adresleri, hız sınırlama, parola özeti</li>
+            </ul>
+          </section>
+        </div>
+      </section>
+
+      <section id="indir" class="wrap download">
+        <h2>İndir</h2>
+        <p class="lede">Katılımcıların bir şey indirmesi gerekmez; bağlantıyı tarayıcıda açmaları yeterli. Sunucuyu bir kez kurun, laboratuvar bilgisayarlarına isterseniz istemciyi ekleyin.</p>
+        <div class="dl-table" role="table" aria-label="İndirilebilir bileşenler">
+          <div class="dl-row" role="row">
+            <div class="dl-name" role="cell">
+              <h3>Sunucu, Windows</h3>
+              <p>Deneyleri tasarladığınız ve verilerin toplandığı web sunucusu. .NET kurulumu gerektirmez; zip'i açıp başlatın.</p>
+            </div>
+            <div class="dl-meta" role="cell"><span>Windows 10/11, x64</span><span data-size="vigila-sunucu-win-x64.zip">49,6 MB</span></div>
+            <a class="btn primary" role="cell" href="https://github.com/SonerKeser/Vigila/releases/latest/download/vigila-sunucu-win-x64.zip">İndir</a>
+          </div>
+          <div class="dl-row" role="row">
+            <div class="dl-name" role="cell">
+              <h3>Sunucu, Linux</h3>
+              <p>Aynı sunucu; Ubuntu, Debian ve benzeri dağıtımlar için. <code>sh vigila.sh</code> ile başlar.</p>
+            </div>
+            <div class="dl-meta" role="cell"><span>Linux, x64</span><span data-size="vigila-sunucu-linux-x64.tar.gz">48,5 MB</span></div>
+            <a class="btn" role="cell" href="https://github.com/SonerKeser/Vigila/releases/latest/download/vigila-sunucu-linux-x64.tar.gz">İndir</a>
+          </div>
+          <div class="dl-row" role="row">
+            <div class="dl-name" role="cell">
+              <h3>Laboratuvar istemcisi</h3>
+              <p>Laboratuvar bilgisayarında Vigila'yı tarayıcı çubuğu olmadan, kesintisiz tam ekran açar; ekranın uyumasını, yanlışlıkla yenilemeyi ve geri gitmeyi engeller.</p>
+            </div>
+            <div class="dl-meta" role="cell"><span>Windows 10/11, x64</span><span data-size="VigilaLab-win-x64.exe">49,7 MB</span></div>
+            <a class="btn" role="cell" href="https://github.com/SonerKeser/Vigila/releases/latest/download/VigilaLab-win-x64.exe">İndir</a>
+          </div>
+          <div class="dl-row" role="row">
+            <div class="dl-name" role="cell">
+              <h3>Örnek deney paketi</h3>
+              <p>Hemen denemek için bir video, dört saydam görsel ve üç kısa ses; önerilen ayarlarla birlikte.</p>
+            </div>
+            <div class="dl-meta" role="cell"><span>Tüm platformlar</span><span data-size="vigila-ornek-deney-paketi.zip">2,6 MB</span></div>
+            <a class="btn" role="cell" href="https://github.com/SonerKeser/Vigila/releases/latest/download/vigila-ornek-deney-paketi.zip">İndir</a>
+          </div>
+          <div class="dl-row" role="row">
+            <div class="dl-name" role="cell">
+              <h3>Kaynak kod</h3>
+              <p>ASP.NET Core 10, EF Core, React 19, TypeScript. Testler ve paketleme betikleriyle birlikte.</p>
+            </div>
+            <div class="dl-meta" role="cell"><span>MIT lisansı</span></div>
+            <a class="btn" role="cell" href="https://github.com/SonerKeser/Vigila" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <p class="footnote">
+          Dosyaları doğrulamak için <a href="https://github.com/SonerKeser/Vigila/releases/latest/download/SHA256SUMS.txt">SHA-256 özetleri</a>. Laboratuvar istemcisi imzasız olduğundan Windows SmartScreen
+          ilk açılışta uyarı gösterebilir; “Ek bilgi” ve “Yine de çalıştır” ile devam edin.
+        </p>
+      </section>
+
+      <section class="wrap start">
+        <h2>Beş dakikada ilk deney</h2>
+        <ol class="start-steps">
+          <li>
+            <h3>Sunucuyu başlatın</h3>
+            <p>Zip'i açıp <code>Vigila-Baslat.cmd</code> dosyasını çift tıklayın. Linux'ta klasörün içinde:</p>
+            <pre><code>sh vigila.sh</code><button class="copy" type="button" data-copy="sh vigila.sh">Kopyala</button></pre>
+          </li>
+          <li>
+            <h3>Yönetici hesabını açın</h3>
+            <p>Tarayıcıda <code>http://localhost:5317</code> adresini açın. İlk hesap yöneticidir; araştırmacıları ve kredilerini buradan eklersiniz.</p>
+          </li>
+          <li>
+            <h3>Örnek paketi yükleyin</h3>
+            <p>Paketteki dosyaları Medya kütüphanesine sürükleyin, yeni bir deney oluşturun ve Katılım sekmesinden bağlantıyı paylaşın.</p>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap foot-inner">
+        <p>Vigila, MIT lisansıyla açık kaynaktır. Geliştiren: Soner Keser.</p>
+        <p><a href="https://github.com/SonerKeser/Vigila" rel="noopener">GitHub</a><a href="https://github.com/SonerKeser/Vigila/releases" rel="noopener">Sürümler</a><a href="https://github.com/SonerKeser/Vigila/issues" rel="noopener">Sorun bildir</a></p>
+      </div>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

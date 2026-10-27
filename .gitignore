@@ -1,0 +1,26 @@
+# .NET
+bin/
+obj/
+TestResults/
+*.user
+.vs/
+
+# Çalışma anı verisi (veritabanı, yüklenen medya, anahtarlar)
+App_Data/
+*.db
+*.db-shm
+*.db-wal
+
+# Sürüm paketleri (scripts/paketle.ps1)
+artifacts/
+
+# Ön yüz
+node_modules/
+src/Vigila.Api/wwwroot/
+*.tsbuildinfo
+
+# Editör ve yerel notlar
+.idea/
+.vscode/
+.claude/
+CLAUDE.md
